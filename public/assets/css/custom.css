@@ -21,3 +21,8 @@
 .border-color-dark-custom{
 	border-color: #161b22 !important;
 }
+
+.bullet-danger::marker{
+	font-size: 15px;
+	color: #e53f3c !important;
+}

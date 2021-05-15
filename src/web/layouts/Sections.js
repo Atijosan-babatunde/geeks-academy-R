@@ -96,7 +96,7 @@ export const RecommendedCourses = ({ loading, error, courses }) => {
                                 return (
                                     <div className="item" key={i}>
                                         <div className="card mb-4 card-hover">
-                                            
+
                                             <Link to={`course/${v.slug}/`} className="card-img-top">
                                                 <img src={v.banner.url} alt="" className="rounded-top card-img-top" />
                                             </Link>
@@ -158,7 +158,7 @@ export const RecommendedCourses = ({ loading, error, courses }) => {
     )
 }
 
-export const MostPopularCourses = () => {
+export const MostPopularCourses = ({ loading, error, courses }) => {
     return (
         <div className="pb-lg-3 pt-lg-3">
             <div className="container">
@@ -177,373 +177,65 @@ export const MostPopularCourses = () => {
                         </li>
                     </ul>
                     <div className="sliderSecond">
-                        <div className="item">
+                        {
+                            !loading && !error && courses && courses?.map((v, i) => {
+                                return (
+                                    <div className="item" key={i}>
+                                        <div className="card mb-4 card-hover">
 
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-gatsby.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
+                                            <Link to={`course/${v.slug}/`} className="card-img-top">
+                                                <img src={v.banner.url} alt="" className="rounded-top card-img-top" />
+                                            </Link>
 
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">Gatsby
-                                    JS:
-                    build blog with GraphQL and React</a></h4>
+                                            <div className="card-body">
+                                                <h4 className="mb-2 text-truncate-line-2 ">
+                                                    <Link to={`course/${v.slug}/`} className="text-inherit">{v.headline}</Link>
+                                                </h4>
+                                                <ul className="mb-3 list-inline">
+                                                    <li className="list-inline-item"><i className="far fa-clock mr-1"></i>{v.duration}</li>
+                                                    <li className="list-inline-item">
+                                                        <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
+                                                            <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
+                                                            <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
+                                                        </svg>
+                                                        {v.difficulty.text}
+                                                    </li>
+                                                </ul>
+                                                <div className="lh-1">
+                                                    <span>
+                                                        <i className="mdi mdi-star text-warning mr-n1"></i>
+                                                        <i className="mdi mdi-star text-warning mr-n1"></i>
+                                                        <i className="mdi mdi-star text-warning mr-n1"></i>
+                                                        <i className="mdi mdi-star text-warning mr-n1"></i>
+                                                        <i className="mdi mdi-star text-warning"></i>
+                                                    </span>
+                                                    <span className="text-warning">4.5</span>
+                                                    <span className="font-size-xs text-muted">(7,700)</span>
+                                                </div>
+                                            </div>
 
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>3h 56m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Beginner
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(9,370)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-5.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Morris Mccoy</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-javascript.jpg"
-                                    alt="" className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">Getting
-                    Started with JavaScript</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>2h 46m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#754FFE" />
-                                            </svg>
-                    Advance
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(5,245)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-6.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Ted Hawkins</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
+                                            <div className="card-footer">
+                                                <div className="row align-items-center no-gutters">
+                                                    <div className="col-auto">
+                                                        <img src="assets/images/avatar/avatar-1.jpg" className="rounded-circle avatar-xs" alt="" />
+                                                    </div>
+                                                    <div className="col ml-2">
+                                                        <span>Morris Mccoy</span>
+                                                    </div>
+                                                    <div className="col-auto">
+                                                        <a href="#!" className="text-muted bookmark">
+                                                            <i className="fe fe-bookmark  "></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-css.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">CSS:
-                    ultimate CSS course from beginner to advanced</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>1h 30m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Beginner
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(17,000)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-7.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Juanita Bell</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-wordpress.jpg"
-                                    alt="" className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html"
-                                        className="text-inherit">Wordpress:
-                    complete WordPress theme &amp; plugin development</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>2h 30m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Intermediate
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(16,500)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-8.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Claire Robertson</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-javascript.jpg"
-                                    alt="" className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">Getting
-                    Started with JavaScript</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>2h 46m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#754FFE" />
-                                            </svg>
-                    Advance
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(5,245)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-6.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Ted Hawkins</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-css.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">CSS:
-                    ultimate CSS course from beginner to advanced</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>1h 30m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Beginner
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(17,000)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-7.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Juanita Bell</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-wordpress.jpg"
-                                    alt="" className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html"
-                                        className="text-inherit">Wordpress:
-                    complete WordPress theme &amp; plugin development</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>2h 30m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Intermediate
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(16,500)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-8.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Claire Robertson</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>
@@ -551,7 +243,7 @@ export const MostPopularCourses = () => {
     )
 }
 
-export const TrendingCourses = () => {
+export const TrendingCourses = ({ loading, error, courses }) => {
     return (
         <div className="pb-lg-8 pt-lg-3 py-6">
             <div className="container">
@@ -571,373 +263,65 @@ export const TrendingCourses = () => {
                         </li>
                     </ul>
                     <div className="sliderThird">
-                        <div className="item">
+                        {
+                            !loading && !error && courses && courses?.map((v, i) => {
+                                return (
+                                    <div className="item" key={i}>
+                                        <div className="card mb-4 card-hover">
 
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-react.jpg" alt=""
-                                    className="card-img-top rounded-top" />
-                                </a>
+                                            <Link to={`course/${v.slug}/`} className="card-img-top">
+                                                <img src={v.banner.url} alt="" className="rounded-top card-img-top" />
+                                            </Link>
 
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2"><a href="./course-single.html" className="text-inherit">How to
-                    easily create a website with React</a></h4>
+                                            <div className="card-body">
+                                                <h4 className="mb-2 text-truncate-line-2 ">
+                                                    <Link to={`course/${v.slug}/`} className="text-inherit">{v.headline}</Link>
+                                                </h4>
+                                                <ul className="mb-3 list-inline">
+                                                    <li className="list-inline-item"><i className="far fa-clock mr-1"></i>{v.duration}</li>
+                                                    <li className="list-inline-item">
+                                                        <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
+                                                            <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
+                                                            <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
+                                                        </svg>
+                                                        {v.difficulty.text}
+                                                    </li>
+                                                </ul>
+                                                <div className="lh-1">
+                                                    <span>
+                                                        <i className="mdi mdi-star text-warning mr-n1"></i>
+                                                        <i className="mdi mdi-star text-warning mr-n1"></i>
+                                                        <i className="mdi mdi-star text-warning mr-n1"></i>
+                                                        <i className="mdi mdi-star text-warning mr-n1"></i>
+                                                        <i className="mdi mdi-star text-warning"></i>
+                                                    </span>
+                                                    <span className="text-warning">4.5</span>
+                                                    <span className="font-size-xs text-muted">(7,700)</span>
+                                                </div>
+                                            </div>
 
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>3h 56m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Beginner
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(12,245)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-9.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Morris Mccoy</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-graphql.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">GraphQL:
-                    introduction to graphQL for beginners</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>2h 46m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#754FFE" />
-                                            </svg>
-                    Advance
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(15,350)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-10.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Ted Hawkins</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
+                                            <div className="card-footer">
+                                                <div className="row align-items-center no-gutters">
+                                                    <div className="col-auto">
+                                                        <img src="assets/images/avatar/avatar-1.jpg" className="rounded-circle avatar-xs" alt="" />
+                                                    </div>
+                                                    <div className="col ml-2">
+                                                        <span>Morris Mccoy</span>
+                                                    </div>
+                                                    <div className="col-auto">
+                                                        <a href="#!" className="text-muted bookmark">
+                                                            <i className="fe fe-bookmark  "></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-angular.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">Angular -
-                    the complete guide for beginner</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>1h 30m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Beginner
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(6,600)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-4.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Juanita Bell</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-python.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">The
-                                    Python
-                    Course: build web application</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>2h 30m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Intermediate
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(2,500)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-6.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Claire Robertson</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-graphql.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">GraphQL:
-                    introduction to graphQL for beginners</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>2h 46m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#754FFE" />
-                                            </svg>
-                    Advance
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(15,350)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-10.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Ted Hawkins</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-angular.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">Angular -
-                    the complete guide for beginner</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>1h 30m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Beginner
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(6,600)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-4.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Juanita Bell</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="item">
-
-                            <div className="card  mb-4 card-hover">
-                                <a href="./course-single.html" className="card-img-top"><img src="assets/images/course/course-python.jpg" alt=""
-                                    className="card-img-top rounded-top" /></a>
-
-                                <div className="card-body">
-                                    <h4 className="mb-2 text-truncate-line-2 "><a href="./course-single.html" className="text-inherit">The
-                                    Python
-                    Course: build web application</a></h4>
-
-                                    <ul className="mb-3 list-inline">
-                                        <li className="list-inline-item"><i className="far fa-clock mr-1"></i>2h 30m</li>
-                                        <li className="list-inline-item">
-                                            <svg className="mr-1 mt-n1" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE" />
-                                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE" />
-                                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9" />
-                                            </svg>
-                    Intermediate
-                  </li>
-                                    </ul>
-                                    <div className="lh-1">
-                                        <span>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning mr-n1"></i>
-                                            <i className="mdi mdi-star text-warning"></i>
-                                        </span>
-                                        <span className="text-warning">4.5</span>
-                                        <span className="font-size-xs text-muted">(2,500)</span>
-                                    </div>
-                                </div>
-
-                                <div className="card-footer">
-                                    <div className="row align-items-center no-gutters">
-                                        <div className="col-auto">
-                                            <img src="assets/images/avatar/avatar-6.jpg" className="rounded-circle avatar-xs" alt="" />
-                                        </div>
-                                        <div className="col ml-2">
-                                            <span>Claire Robertson</span>
-                                        </div>
-                                        <div className="col-auto">
-                                            <a href="#!" className="text-muted bookmark">
-                                                <i className="fe fe-bookmark  "></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>

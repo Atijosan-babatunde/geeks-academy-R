@@ -10,6 +10,9 @@ query MyQuery {
     rating
     duration
     difficulty
+    recommended
+    popular
+    trending
     description {
       text
     }
@@ -36,6 +39,17 @@ query geeksAcademy($slug: String!) {
     banner {
       url
     }
+  }
+}
+`;
+
+export const CREATE_USER = gql`
+mutation MyMutation($email: String!, $username: String!, $password: String!) {
+  __typename
+  createRegistration(data: {email: $email, username: $username, password: $password}) {
+    id,
+    email,
+    username
   }
 }
 `;

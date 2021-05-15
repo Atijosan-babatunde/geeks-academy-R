@@ -62,7 +62,7 @@ export default function Landing() {
                 }
             }
         })
-    }, [])
+    }, [courses])
 
     React.useEffect(() => {
         var $ = window && window.$;
@@ -89,20 +89,38 @@ export default function Landing() {
                 }
             }
         })
-    })
-    
+    }, [courses])
+
     return (
         <BaseContainer>
             <Section.HomeBanner />
 
             <Section.CourseStats />
 
-            <Section.RecommendedCourses loading={loading} error={error} courses={courses?.geeksAcademies} />
-          
-            <Section.MostPopularCourses />
+            <Section.RecommendedCourses
+                loading={loading}
+                error={error}
+                courses={
+                    courses?.geeksAcademies?.filter(v => v.recommended)
+                }
+            />
 
-            <Section.TrendingCourses />
-            
+            <Section.MostPopularCourses
+                loading={loading}
+                error={error}
+                courses={
+                    courses?.geeksAcademies?.filter(v => v.popular)
+                }
+            />
+
+            <Section.TrendingCourses
+                loading={loading}
+                error={error}
+                courses={
+                    courses?.geeksAcademies?.filter(v => v.trending)
+                }
+            />
+
         </BaseContainer>
     )
 }
