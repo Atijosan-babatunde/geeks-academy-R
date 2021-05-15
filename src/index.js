@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import AppRouter from './router';
 
 const client = new ApolloClient({
-	uri: 'https://api-eu-central-1.graphcms.com/v2/ckonh48bup4vq01z1518k6icc/master',
+	uri: process.env.REACT_APP_APOLLO_SOCKET,
 	cache: new InMemoryCache()
 });
 

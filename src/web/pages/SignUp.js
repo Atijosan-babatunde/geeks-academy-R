@@ -8,11 +8,11 @@ import cogoToast from 'cogo-toast';
 export default function SignUp({ history }) {
     document.title = "Let's Get you Started";
 
-    const [addUser, { loading, error, data }] = useMutation(Query.CREATE_USER, {
+    const [addUser, { loading }] = useMutation(Query.CREATE_USER, {
         onError: (e) => {
             const { networkError } = e;
             if (networkError) {
-                const { name, response, result, statusCode } = networkError;
+                const { result, statusCode } = networkError;
                 console.log(statusCode)
                 cogoToast.error(
                     <ul className="pl-3 mt-2">

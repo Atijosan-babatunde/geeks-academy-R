@@ -9,10 +9,11 @@ export default function Single({ match }) {
     } = match;
     const { loading, error, data } = useQuery(Query.GET_SINGLE_COURSE, {
         variables: { slug },
+        onCompleted: (e) => {
+            const { geeksAcademy } = e;
+            document.title = geeksAcademy?.headline || '';
+        }
     });
-    
-    // const { geeksAcademy } = data;
-    // document.title = headline || '';
 
     return (
         <BaseContainer loading={loading} error={error}>
@@ -88,833 +89,45 @@ export default function Single({ match }) {
                                             <div className="accordion" id="courseAccordion">
                                                 <div>
                                                     <ul className="list-group list-group-flush">
-                                                        <li className="list-group-item px-0 pt-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none active collapsed" data-toggle="collapse" href="#courseTwo" aria-expanded="false" aria-controls="courseTwo">
-                                                                <div className="mr-auto">
-                                                                    Introduction to JavaScript
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseTwo" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 7s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Installing Development Software</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 11s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Hello World Project from GitHub</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 33s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Our Sample Website</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 15s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none collapsed" data-toggle="collapse" href="#courseThree" aria-expanded="false" aria-controls="courseThree">
-                                                                <div className="mr-auto">
-                                                                    JavaScript Beginning
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseThree" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 41s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Adding JavaScript Code to a Web Page</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 39s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>
-                                                                                Working with JavaScript Files
-                                      </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>6m 18s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Formatting Code </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 18s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>
-                                                                                Detecting and Fixing Errors
-                                      </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 14s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Case Sensitivity </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 48s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Commenting Code </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 24s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="course-resume.html" className="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
-                                                                            <span>Summary</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 14s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" href="#courseFour" aria-expanded="false" aria-controls="courseFour">
-                                                                <div className="mr-auto">
-                                                                    Variables and Constants
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseFour" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 19s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>What Is a Variable?</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 11s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Declaring Variables </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 30s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Using let to Declare Variables </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 28s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Naming Variables </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 14s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Common Errors Using Variables </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 30s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Changing Variable Values </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 4s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Constants </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 15s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>The var Keyword </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 20s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Summary</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 49s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" href="#courseFive" aria-expanded="false" aria-controls="courseFive">
-                                                                <div className="mr-auto">
-                                                                    Types and Operators
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseFive" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 55s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Numbers </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>6m 14s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Operator Precedence </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 58s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Number Precision</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 22s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Negative Numbers </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 35s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Strings </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 7s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Manipulating Strings </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>5m 8s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Converting Strings and Numbers </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 55s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Boolean Variables </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 39s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" href="#courseSix" aria-expanded="false" aria-controls="courseSix">
-                                                                <div className="mr-auto">
-                                                                    Program Flow
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseSix" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 52s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Clip Watched </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 27s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Conditionals Using if() </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 25s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Truthy and Falsy</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 30s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>if ... else </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 30s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Comparing === and == </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 52s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>The Ternary Operator </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 47s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Block Scope Using let </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 21s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Looping with for() </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>5m 30s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Looping with do ... while() </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 58s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Summary </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 21s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" href="#courseSeven" aria-expanded="false" aria-controls="courseSeven">
-                                                                <div className="mr-auto">
-                                                                    Functions
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseSeven" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 52s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Function Basics </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 46s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Function Expressions </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 32s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Passing Information to Functions</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 19s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Function Return Values </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 13s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Function Scope </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 20s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Using Functions to Modify Web Pages </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 42s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-0 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Summary </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 3s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" href="#courseEight" aria-expanded="false" aria-controls="courseEight">
-                                                                <div className="mr-auto">
-                                                                    Objects and the DOM
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseEight" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 48s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Object Properties </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 28s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Object Methods </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 3s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Passing Objects to Functions</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 27s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Standard Built-in Objects </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>6m 55s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>The Document Object Model (DOM) </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 29s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Styling DOM Elements </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 42s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Detecting Button Clicks </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 3s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Showing and Hiding DOM Elements </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 37s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Summary </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 47s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" href="#courseNine" aria-expanded="false" aria-controls="courseNine">
-                                                                <div className="mr-auto">
-                                                                    Arrays
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseNine" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 48s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Creating and Initializing Arrays </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 7s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Accessing Array Items </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 4s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Manipulating Arrays </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 3s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>slice() and splice() </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>5m 54s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Array Searching and Looping </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>7m 32s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Arrays in the DOM </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 11s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Summary </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 28s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" href="#courseTen" aria-expanded="false" aria-controls="courseTen">
-                                                                <div className="mr-auto">
-                                                                    Scope and Hoisting
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseTen" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Introduction</span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 20s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Global Scope </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>4m 7s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Clip Watched </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 14s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Function Scope </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>3m 45s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Var and Hoisting </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 21s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Undeclared Variables and Strict Mode </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>2m 16s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#!" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none disableClick">
-                                                                        <div className="text-truncate">
-                                                                            <span className="icon-shape bg-light text-secondary icon-sm rounded-circle mr-2"><i className="fe fe-lock font-size-md"></i></span>
-                                                                            <span>Summary </span>
-                                                                        </div>
-                                                                        <div className="text-truncate">
-                                                                            <span>1m 33s</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li className="list-group-item px-0 pb-0">
-                                                            <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none" data-toggle="collapse" href="#courseEleven" aria-expanded="false" aria-controls="courseEleven">
-                                                                <div className="mr-auto">
-                                                                    Summary
-                                                            </div>
-                                                                <span className="chevron-arrow ml-4">
-                                                                    <i className="fe fe-chevron-down font-size-md"></i>
-                                                                </span>
-                                                            </a>
-                                                            <div className="collapse" id="courseEleven" data-parent="#courseAccordion">
-                                                                <div className="pt-3 pb-2">
-                                                                    <p className="ped">
-                                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae esse velit eos sunt ab inventore est tenetur blanditiis? Voluptas eius molestiae ad itaque tempora nobis minima eveniet aperiam molestias, maiores natus expedita dolores ea non possimus
-                                                                        magnam corrupt i quas rem unde quo enim porro culpa! Quaerat veritatis veniam corrupti iusto.
-                                                                </p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                        {
+                                                            data?.geeksAcademy?.courseOutlines?.map((v, i) => {
+                                                                return (
+                                                                    <li key={i} className="list-group-item px-0 pt-0">
+                                                                        <a className="h4 mb-0 d-flex align-items-center text-inherit text-decoration-none active collapsed" data-toggle="collapse" href={`#${v.id}`} aria-expanded="false" aria-controls="courseTwo">
+                                                                            <div className="mr-auto">
+                                                                                {v.title}
+                                                                            </div>
+                                                                            <span className="chevron-arrow ml-4">
+                                                                                <i className="fe fe-chevron-down font-size-md"></i>
+                                                                            </span>
+                                                                        </a>
+                                                                        <div className="collapse" id={v.id} data-parent="#courseAccordion">
+                                                                            <div className="pt-3 pb-2">
+                                                                                {
+                                                                                    v?.lesson && v?.lesson?.map((va, _in) => {
+                                                                                        return (
+                                                                                            <a key={_in} href="course-resume.html" className="mb-2 d-flex justify-content-between align-items-center text-inherit text-decoration-none">
+                                                                                                <div className="text-truncate">
+                                                                                                    <span className="icon-shape bg-light text-primary icon-sm rounded-circle mr-2"><i className="mdi mdi-play font-size-md"></i></span>
+                                                                                                    <span>{va?.title}</span>
+                                                                                                </div>
+                                                                                                <div className="text-truncate">
+                                                                                                    <span>{va?.duration}</span>
+                                                                                                </div>
+                                                                                            </a>
+                                                                                        )
+                                                                                    })
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>)
+                                                            })
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div className="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
 
                                             <div className="mb-4">
@@ -922,20 +135,20 @@ export default function Single({ match }) {
                                                 <p className="ped">
                                                     If you’re learning to program for the first time, or if you’re coming from a different language, this course, JavaScript: Getting Started, will give you the basics for coding in JavaScript. First, you'll discover the types of applications that can be
                                                     built with JavaScript, and the platforms they’ll run on.
-                                            </p>
+                                                </p>
                                                 <p className="ped">
                                                     Next, you’ll explore the basics of the language, giving plenty of examples. Lastly, you’ll put your JavaScript knowledge to work and modify a modern, responsive web page. When you’re finished with this course, you’ll have the skills and knowledge in JavaScript
                                                     to create simple programs, create simple web applications, and modify web pages.
-                                            </p>
+                                                </p>
                                             </div>
+
                                             <h4 className="hed">What you’ll learn</h4>
                                             <div className="row mb-3">
                                                 <div className="col-12 col-md-6">
                                                     <ul className="list-unstyled">
                                                         <li className="d-flex mb-2">
                                                             <i className="far fa-check-circle text-success mr-2 mt-2"></i>
-                                                            <span className="ped">Recognize the importance of understanding your objectives when addressing an
-                                audience.</span>
+                                                            <span className="ped">Recognize the importance of understanding your objectives when addressing an audience.</span>
                                                         </li>
                                                         <li className="d-flex mb-2">
                                                             <i className="far fa-check-circle text-success mr-2 mt-2"></i>
@@ -967,8 +180,8 @@ export default function Single({ match }) {
                                             <p className="ped">Maecenas viverra condimentum nulla molestie condimentum. Nunc ex libero, feugiat quis lectus vel, ornare euismod ligula. Aenean sit amet arcu nulla.</p>
                                             <p className="ped">Duis facilisis ex a urna blandit ultricies. Nullam sagittis ligula non eros semper, nec mattis odio ullamcorper. Phasellus feugiat sit amet leo eget consectetur.</p>
                                         </div>
-                                        <div className="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
 
+                                        <div className="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                                             <div className="mb-3">
                                                 <h3 className="hed">How students rated this courses</h3>
                                                 <div className="row align-items-center">
@@ -1242,8 +455,8 @@ export default function Single({ match }) {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-12 col-12 mt-lg-n22">
 
+                        <div className="col-lg-4 col-md-12 col-12 mt-lg-n22">
                             <div className="card mb-3 mb-4">
                                 <div className="p-1">
                                     <div className="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-lg bg-cover" style={{ backgroundImage: `url('${data?.geeksAcademy?.banner?.url}')` }}>
@@ -1321,6 +534,7 @@ export default function Single({ match }) {
                         </div>
                     </div>
 
+
                     <div className="pt-12 pb-3">
                         <div className="row d-md-flex align-items-center mb-4">
                             <div className="col-12">
@@ -1379,8 +593,7 @@ export default function Single({ match }) {
                                     <a href="course-single.html" className="card-img-top"><img src="/assets/images/course/course-graphql.jpg" alt="" className="card-img-top rounded-top" /></a>
 
                                     <div className="card-body">
-                                        <h4 className="hed text-truncate-line-2"><a href="course-single.html" className="text-inherit">GraphQL:
-                        introduction to graphQL for beginners</a></h4>
+                                        <h4 className="hed text-truncate-line-2"><a href="course-single.html" className="text-inherit">GraphQL: introduction to graphQL for beginners</a></h4>
                                         <ul className="mb-3 list-inline">
                                             <li className="ped list-inline-item"><i className="far fa-clock mr-1"></i>2h 46m</li>
                                             <li className="ped list-inline-item">
@@ -1389,8 +602,9 @@ export default function Single({ match }) {
                                                     <rect x="7" y="5" width="2" height="9" rx="1" fill="#754FFE"></rect>
                                                     <rect x="11" y="2" width="2" height="12" rx="1" fill="#754FFE"></rect>
                                                 </svg> Advance
-                                        </li>
+                                            </li>
                                         </ul>
+
                                         <div className="lh-1">
                                             <span>
                                                 <i className="mdi mdi-star text-warning mr-n1"></i>
@@ -1402,7 +616,9 @@ export default function Single({ match }) {
                                             <span className="text-warning">4.5</span>
                                             <span className="font-size-xs text-muted">(9,300)</span>
                                         </div>
+
                                     </div>
+
                                     <div className="card-footer">
                                         <div className="row align-items-center no-gutters">
                                             <div className="col-auto">
@@ -1424,8 +640,7 @@ export default function Single({ match }) {
                                 <div className="card mb-4 card-hover">
                                     <a href="course-single.html" className="card-img-top"><img src="/assets/images/course/course-angular.jpg" alt="" className="card-img-top rounded-top" /></a>
                                     <div className="card-body">
-                                        <h4 className="hed text-truncate-line-2"><a href="course-single.html" className="text-inherit">Angular -
-                        the complete guide for beginner</a></h4>
+                                        <h4 className="hed text-truncate-line-2"><a href="course-single.html" className="text-inherit">Angular - the complete guide for beginner</a></h4>
                                         <ul className="mb-3 list-inline">
                                             <li className="ped list-inline-item"><i className="far fa-clock mr-1"></i>1h 30m</li>
                                             <li className="ped list-inline-item">

@@ -32,6 +32,11 @@ query geeksAcademy($slug: String!) {
     duration
     difficulty
     originalPrice
+    courseOutlines {
+      id
+      title
+      lesson
+    }
     currentPrice
     description {
       text
