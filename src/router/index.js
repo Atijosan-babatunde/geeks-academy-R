@@ -1,27 +1,50 @@
 import React from 'react';
-import {Router, Switch, Route} from "react-router-dom"
-import LandingPage from "../page/LandingPage";
-import CourseCategory from "../page/CourseCategory";
-import CourseSingle from "../page/CourseSingle";
-import SignUp from "../page/SignUp";
-import SignIn from "../page/SignIn";
-import CourseCheckout from "../page/CourseCheckout";
-import { createBrowserHistory } from "history";
+import { Route, Router, Switch } from 'react-router-dom';
+// import { decrypt, fetchCookie, removeCookie } from '../redux/actions/helpers';
+import * as Pages from '../web/pages';
 
-function Approuter() {
-    const history = createBrowserHistory();
+// const auth = {
+//     isAuthenticated: fetchCookie('token') ? true : false,
+//     isAuthorized: window && window.localStorage && atob(decrypt(process.env.REACT_APP_ENC_SALT, window.localStorage.getItem('auth:id')))
+// }
 
+const AppRouter = ({ history, isOffline }) => {
     return (
         <Router history={history}>
             <Switch>
-                <Route exact path="/" component={LandingPage} />
-                <Route path="/course-category" component={CourseCategory} />
-                <Route path="/course-single" component={CourseSingle}/>
-                <Route path="/sign-up" component={SignUp}/>
-                <Route path="/sign-in" component={SignIn}/>
-                <Route path="/course-checkout" component={CourseCheckout}/>
+                <Route path="/" exact component={Pages.Landing} />
+                <Route path="/join/sign-in/" exact component={Pages.SignIn} />
+                <Route path="/join/sign-up/" exact component={Pages.SignUp} />
+                <Route path="/enroll/checkout/" exact component={Pages.Checkout} />
+                <Route path="/course/:slug/" exact component={Pages.Single} />
+                <Route component={Pages.E_404} />
             </Switch>
         </Router>
     )
 }
-export default Approuter
+
+
+// const PrivateRoute = ({ component: Component, ...rest }) => {
+//     if (auth.isAuthenticated && auth.isAuthorized === 'false') removeCookie('token')
+//     return (
+//         <Route {...rest} render=
+//             {props => auth.isAuthenticated && auth.isAuthorized === 'true' ?
+//                 (<Component {...props} />) :
+//                 (<Redirect to={{ pathname: "/", state: { from: props.location } }} />)
+//             }
+//         />
+//     );
+// }
+
+// const SessionRoute = ({ component: Component, session, ...rest }) => {
+//     return (
+//         <Route {...rest} render=
+//             {props => auth.isAuthenticated && auth.isAuthorized === 'true' ? 
+//                 (<Redirect to={{ pathname: rest.pathRedirect, state: { from: props.location } }} />) :
+//                 (<Component {...props} />)
+//             }
+//         />
+//     );
+// }
+
+export default AppRouter;

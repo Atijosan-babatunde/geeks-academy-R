@@ -1,0 +1,28 @@
+.nav-custom{
+	padding: 0 5px;
+}
+
+.nav-custom a{
+	/*font-weight: bold;*/
+	color: #000;
+}
+
+.navbar-default{
+	background-color: #161b22 !important;
+}
+
+.bg-dark-custom{
+	background-color: #090c10 !important;
+}
+.bg-dark-custom-1{
+	background-color: #0d1117 !important;
+}
+
+.border-color-dark-custom{
+	border-color: #161b22 !important;
+}
+
+.bullet-danger::marker{
+	font-size: 15px;
+	color: #e53f3c !important;
+}
