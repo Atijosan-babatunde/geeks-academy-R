@@ -1525,10 +1525,10 @@ export function Footer(){
               
             <div className="col-12 col-md-6">
                 <nav className="nav nav-footer justify-content-center justify-content-md-end">
-                    <a className="nav-link active pl-0" href="#!">Privacy</a>
-                    <a className="nav-link" href="#!">Terms </a>
-                    <a className="nav-link" href="#!">Feedback</a>
-                    <a className="nav-link" href="#!">Support</a>
+                    <Link className="nav-link active pl-0" to ="/privacy/">Privacy </Link>
+                    <Link className="nav-link" to ="#!">Terms </Link>
+                    <Link className="nav-link" to ="#!">Feedback</Link>
+                    <Link className="nav-link" to ="#!">Support</Link>
                 </nav>
             </div>
         </div>

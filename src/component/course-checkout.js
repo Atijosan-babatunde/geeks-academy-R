@@ -568,7 +568,7 @@ export function Footer(){
              
             <div className="col-12 col-md-6">
                 <nav className="nav nav-footer justify-content-center justify-content-md-end">
-                    <Link className="nav-link active pl-0" to="course-single" >Privacy</Link>
+                <Link className="nav-link active pl-0" to ="/privacy/">Privacy </Link>
                     <Link className="nav-link" to="course-checkout" >Terms </Link>
                     <Link className="nav-link" to="course-checkout" >Feedback</Link>
                     <Link className="nav-link" to="course-checkout" >Support</Link>

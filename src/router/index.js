@@ -16,6 +16,7 @@ const AppRouter = ({ history, isOffline }) => {
                 <Route path="/join/sign-in/" exact component={Pages.SignIn} />
                 <Route path="/join/sign-up/" exact component={Pages.SignUp} />
                 <Route path="/enroll/checkout/" exact component={Pages.Checkout} />
+                <Route path="/privacy/" exact component={Pages.Privacy}/>
                 <Route path="/course/:slug/" exact component={Pages.Single} />
                 <Route component={Pages.E_404} />
             </Switch>
