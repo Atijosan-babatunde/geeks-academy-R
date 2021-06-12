@@ -10,7 +10,7 @@ export const HomeBanner = () => {
                         <div className="py-5 py-lg-0">
                             <h1 className="text-white display-4 font-weight-bold">Welcome to Avila Academy</h1>
                             <p className="text-white-50 mb-4 lead1">Hand-picked Instructor and expertly crafted courses, designed for the modern students and entrepreneur.</p>
-                            <a href="./course-category.html" className="btn btn-success">Browse Courses</a>
+                            <Link to={'/courses/'} className="btn btn-success">Browse Courses</Link>
                         </div>
                     </div>
                     <div className=" col-xl-7 col-lg-6 col-md-12 text-lg-right text-center">

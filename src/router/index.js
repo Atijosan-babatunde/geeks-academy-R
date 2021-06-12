@@ -13,6 +13,7 @@ const AppRouter = ({ history, isOffline }) => {
         <Router history={history}>
             <Switch>
                 <Route path="/" exact component={Pages.Landing} />
+                <Route path="/courses/" exact component={Pages.Courses} />
                 <Route path="/join/sign-in/" exact component={Pages.SignIn} />
                 <Route path="/join/sign-up/" exact component={Pages.SignUp} />
                 <Route path="/enroll/checkout/" exact component={Pages.Checkout} />

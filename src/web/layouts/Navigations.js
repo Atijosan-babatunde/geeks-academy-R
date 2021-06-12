@@ -6,7 +6,7 @@ export const NavigationTop = () => {
         <nav className="navbar navbar-expand-lg navbar-default">
                 <div className="container-fluid px-0">
                     <Link className="navbar-brand" to={'/'}>
-                        <img src="/assets/images/brand/logo/logo.svg" alt="" />
+                        <img src="/assets/images/logo_transparent.png" alt="" height="60" width="60" />
                     </Link>
 
        
